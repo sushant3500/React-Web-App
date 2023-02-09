@@ -6,7 +6,6 @@ import LoginPage from './components/LoginPage';
 import CustomerList from './components/CustomerList';
 import ErrorPage from './components/ErrorPage';
 
-
 const WebRoute = () => {
   return (
     <Routes>     

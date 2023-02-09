@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import AttachmentModel from './AttachmentModel';
+import { PencilSquare,XCircleFill,SendFill } from 'react-bootstrap-icons'; 
 
 interface dataType {
   id: string,
@@ -9,7 +11,7 @@ interface dataType {
   address: string,
   dateOfBirth: string,
   phoneNumber: string,
-  emailAddress:string
+  emailAddress: string
 
 }
 const CustomerList = () => {
@@ -20,6 +22,13 @@ const CustomerList = () => {
         setdata(res.data)
       })
   }
+  const [email, setEmail] = useState(" ");
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
 
   const handleDelete = (id: string) => {
     axios.delete(`https://63a16429a543280f7754e6f6.mockapi.io/Create/${id}`)
@@ -31,13 +40,18 @@ const CustomerList = () => {
     getData();
   }, [])
 
-  const setToLocalStorage = (id: string, name: string, address: string, dateOfBirth: string, phoneNumber: string, emailAddress:string) => {
+  const setToLocalStorage = (id: string, name: string, address: string, dateOfBirth: string, phoneNumber: string, emailAddress: string) => {
     localStorage.setItem("id", id);
     localStorage.setItem("name", name);
     localStorage.setItem("address", address);
     localStorage.setItem("dateOfBirth", dateOfBirth);
     localStorage.setItem("phoneNumber", phoneNumber);
     localStorage.setItem("emailAddress", emailAddress);
+
+  }
+  const attachmentModel = (email: string) => {
+    setEmail(email)
+    setShow(true)
 
   }
   return (
@@ -51,8 +65,8 @@ const CustomerList = () => {
 
       <div className="card w-80 mx-auto">
         <div className="card-body">
-
-          <Table >
+          <AttachmentModel emailId={email} show={show} handleClose={handleClose} />
+          <Table striped >
             <thead>
               <tr>
                 <th>ID</th>
@@ -61,8 +75,9 @@ const CustomerList = () => {
                 <th>Date of Birth</th>
                 <th>Phone Number</th>
                 <th>Email Address</th>
-                
-                
+                <th></th>
+
+
                 <th></th>
                 <th></th>
               </tr>
@@ -76,16 +91,18 @@ const CustomerList = () => {
                     <td>{eachData.address}</td>
                     <td>{eachData.dateOfBirth}</td>
                     <td>{eachData.phoneNumber}</td>
-                    <td><Link to={`/email`}>{eachData.emailAddress}</Link></td>
-                    <td><Link to='/update'><Button className='btn-success' onClick={() => setToLocalStorage(
+                    <td>{eachData.emailAddress}</td>
+                    <td > <SendFill title='Send Attachment'size={25}  onClick={() => attachmentModel(eachData.emailAddress)}/>{' '}</td>
+
+                    <td><Link to='/update'> <PencilSquare title='edit' size={25} onClick={() => setToLocalStorage(
                       eachData.id,
                       eachData.name,
                       eachData.address,
                       eachData.dateOfBirth,
                       eachData.phoneNumber,
                       eachData.emailAddress
-                    )}>Edit</Button></Link></td>
-                    <td><Button className='btn-danger' onClick={() => handleDelete(eachData.id)}>Delete</Button></td>
+                    )}/></Link></td>
+                    <td><XCircleFill title='delete'color="red" size={25} className='btn-danger' onClick={() => handleDelete(eachData.id)}/></td>
                   </tr>
                 </tbody>
               );
