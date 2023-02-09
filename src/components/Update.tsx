@@ -42,7 +42,7 @@ const navigate2=useNavigate();
     </div>
     <div className="card w-75 mx-auto">
   <div className="card-body">
-    <form>
+    <form onSubmit={handleUpdateClick}>
       <div className="mb-3">
         <label className="form-label">Name</label>
         <input
@@ -94,7 +94,6 @@ const navigate2=useNavigate();
       <button
         type="submit"
         className="btn btn-primary"
-         onClick={handleUpdateClick}
       >
         Update
       </button>
