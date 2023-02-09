@@ -1,10 +1,7 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { Button, Navbar } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../logo.svg'
-import WebRoute from "../WebRoute";
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function NavBar() {
   const navigate = useNavigate();
 
