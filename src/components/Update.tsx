@@ -25,7 +25,7 @@ const Update = () => {
   const handleUpdateClick = (e: any) => {
 
     e.preventDefault();
-    axios.put(`https://63a16429a543280f7754e6f6.mockapi.io/Create/${id}`, {
+    axios.put(`https://63e8bda54f3c6aa6e7c22c0b.mockapi.io/crud/${id}`, {
       name: name,
       address: address,
       dateOfBirth: dateOfBirth,

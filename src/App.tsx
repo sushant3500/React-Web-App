@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import WebRoute from './WebRoute';
 import { Container } from 'react-bootstrap';

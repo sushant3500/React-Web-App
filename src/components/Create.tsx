@@ -15,7 +15,7 @@ const Create = () => {
   const history = useNavigate();
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios.post('https://63a16429a543280f7754e6f6.mockapi.io/Create', {
+    axios.post('https://63e8bda54f3c6aa6e7c22c0b.mockapi.io/crud', {
       name: name,
       address: address,
       dateOfBirth: dateOfBirth,
@@ -31,7 +31,7 @@ const Create = () => {
       </div>
       <div className="card w-75 mx-auto">
         <div className="card-body">
-          <Form validated={validated} onSubmit={handleSubmit}>
+          <Form  validated={validated} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Customer Name*</Form.Label>
               <Form.Control required pattern="^[a-zA-Z]+ [a-zA-Z]+$" type="text" placeholder="Enter Your Name"
@@ -57,7 +57,7 @@ const Create = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
               <Form.Label>Phone Number*</Form.Label>
-              <Form.Control required pattern="/^\d{10}$/" type="text" onChange={(e) => setPhoneNumber(e.target.value)} />
+              <Form.Control pattern="/^\d{10}$/" type="number" onChange={(e) => setPhoneNumber(e.target.value)} />
               <Form.Text className="text-muted">
                 Enter 10 digit Mobile Number
               </Form.Text>

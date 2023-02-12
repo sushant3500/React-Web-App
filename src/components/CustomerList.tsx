@@ -15,11 +15,11 @@ interface dataType {
 
 }
 const CustomerList = () => {
-  const [data, setdata] = useState<dataType[]>([]);
+  const [data, setData] = useState<dataType[]>([]);
   const getData = () => {
-    axios.get('https://63a16429a543280f7754e6f6.mockapi.io/Create')
+    axios.get('https://63e8bda54f3c6aa6e7c22c0b.mockapi.io/crud')
       .then((res) => {
-        setdata(res.data)
+        setData(res.data)
       })
   }
   const [email, setEmail] = useState(" ");
@@ -31,7 +31,7 @@ const CustomerList = () => {
 
 
   const handleDelete = (id: string) => {
-    axios.delete(`https://63a16429a543280f7754e6f6.mockapi.io/Create/${id}`)
+    axios.delete(`https://63e8bda54f3c6aa6e7c22c0b.mockapi.io/crud/${id}`)
       .then(() => {
         getData();
       })
